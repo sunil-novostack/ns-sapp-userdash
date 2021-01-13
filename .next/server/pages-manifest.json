@@ -1,7 +1,10 @@
 {
   "/_app": "pages/_app.js",
+  "/": "pages/index.html",
+  "/resetpass": "pages/resetpass.html",
+  "/signin": "pages/signin.html",
+  "/signup": "pages/signup.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/signin": "pages/signin.js",
-  "/resetpass": "pages/resetpass.js"
+  "/404": "pages/404.html"
 }

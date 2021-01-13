@@ -1,0 +1,1 @@
+_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[12],{"/bcm":function(n,_,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/connect",function(){return o("VDB+")}])},"VDB+":function(n,_){}},[["/bcm",0]]]);
