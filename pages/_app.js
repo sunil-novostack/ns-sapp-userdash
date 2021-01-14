@@ -1,18 +1,30 @@
 import React from 'react';
-import App, {Container} from 'next/app';
+import App from 'next/app';
+import Head from 'next/head';
 import {AppProvider} from '@shopify/polaris';
+import { Provider } from '@shopify/app-bridge-react';
 import enTranslations from '@shopify/polaris/locales/en.json';
+import Cookies from 'js-cookie';
 import '@shopify/polaris/dist/styles.css';
 import '../resource/css/style.css';
 
 export default class WrappedApp extends App {
   render() {
     const {Component, pageProps} = this.props;
+    const config  = { apiKey: API_KEY, shopOrigin: Cookies.get('shopOrigin'), forceRedirect: false }
 
     return (
-      <AppProvider i18n={enTranslations}>
-        <Component {...pageProps} />
-      </AppProvider>
+      <React.Fragment>
+        <Head>
+          <title>FB DropShipping</title>
+          <meta charSet="utf-8" />
+        </Head>
+        <Provider config={config}>
+          <AppProvider i18n={enTranslations}>
+            <Component {...pageProps} />
+          </AppProvider>
+        </Provider>
+      </React.Fragment>
     );
   }
 }

@@ -7,8 +7,7 @@ export default function Signup() {
     const [userLastName,setUserLastName] = useState('');
     const [userName,setUserName] = useState('');
     const [userPass,setUserPass] = useState('');
-    const api_key = 'ec7e1b0e4f4879ac841ef8579cd77b9d';
-    const api_sec_key = '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';
+    
     
     const handleSingupSubmit = useCallback((_event) => {
         setIsUserLogged(true)

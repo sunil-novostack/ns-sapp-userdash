@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "NODE_ENV=production node server.js -p $PORT"
   },
   "repository": {
     "type": "git",
@@ -18,19 +18,28 @@
   "bugs": {
     "url": "https://github.com/sunil-novostack/ns-sapp-userdash/issues"
   },
-  "cacheDirectories": [".next/cache"],
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "homepage": "https://github.com/sunil-novostack/ns-sapp-userdash#readme",
   "dependencies": {
     "@shopify/polaris": "^5.12.0",
-    "cookie": "^0.4.1",
+    "@apollo/react-hooks": "^3.1.5",
+    "@shopify/app-bridge-react": "^1.25.0",
+    "@shopify/koa-shopify-auth": "^3.1.65",
+    "@shopify/koa-shopify-graphql-proxy": "^4.0.1",
+    "apollo-boost": "^0.4.9",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.4",
+    "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.2.1",
+    "koa": "^2.13.0",
+    "koa-session": "^6.0.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "next": "^10.0.5",
-    "nonce": "^1.0.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-icons": "^4.1.0",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "react-apollo": "^3.1.5",
+    "react-icons": "^4.1.0"
   }
 }

@@ -2,13 +2,10 @@ import React, {useState, useCallback} from 'react';
 import {Form, Page, FormLayout, Layout, Card, TextField, Button, Icon, DisplayText, Link } from '@shopify/polaris';
 import {IoMdLock } from "react-icons/io";
 
-
 export default function Login() {
     const [isUserLogged,setIsUserLogged] = useState(false);
     const [userName,setUserName] = useState('');
     const [userPass,setUserPass] = useState('');
-    console.log(process.env.SHOPIFY_API_KEY)
-    console.log(process.env.SHOPIFY_API_SECRET_KEY)
     
     
     const handleSigninSubmit = useCallback((_event) => {
