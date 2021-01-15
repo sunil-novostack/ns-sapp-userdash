@@ -29,6 +29,7 @@ app.prepare().then(() => {
       scopes: ['read_products','write_products','read_script_tags','write_script_tags'],
       afterAuth(ctx) {
         const { shop, accessToken } = ctx.session;
+        console.log('We did it!', accessToken);
         ctx.cookies.set('shopOrigin', shop, { httpOnly:false, secure: true, sameSite:'none' });
         ctx.redirect('/');
       },
@@ -36,6 +37,7 @@ app.prepare().then(() => {
   );
 
   server.use(graphQLProxy({ version: ApiVersion.April20}));
+
   server.use(verifyRequest());
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);
