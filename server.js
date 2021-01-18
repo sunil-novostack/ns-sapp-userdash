@@ -27,6 +27,7 @@ app.prepare().then(() => {
       apiKey: SHOPIFY_API_KEY,
       secret: SHOPIFY_API_SECRET_KEY,
       scopes: ['read_products','write_products','read_script_tags','write_script_tags'],
+      embedded:false,
       afterAuth(ctx) {
         const { shop, accessToken } = ctx.session;
         console.log('We did it!', accessToken);
