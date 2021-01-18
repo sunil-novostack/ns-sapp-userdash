@@ -6,12 +6,12 @@ import {
     Form,
     FormLayout,
 } from '@shopify/polaris';
-
+import Cookies from 'js-cookie';
 export default class SettingForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            connected:false,
+            connected:Cookies.get('shopOrigin') ? true : false,
         }
     }
     render(){
