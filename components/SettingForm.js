@@ -38,8 +38,8 @@ export default class SettingForm extends React.Component{
         ?(
             <AccountConnection
                 avatarUrl="#"
-                accountName="Carbojet"
-                details="thisthat.shopify.com"
+                accountName="Sunil-Novostack"
+                details="https://sunil-novostack.myshopify.com/"
                 action={{content: 'Disconnected', onAction: this.toggleConnection.bind(this)}}
                 connected={this.state.connected}
             />
