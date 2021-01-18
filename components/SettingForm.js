@@ -15,6 +15,7 @@ export default class SettingForm extends React.Component{
         }
     }
     render(){
+        console.log(Cookies.get('shopOrigin'))
         return(
                 <Form>
                     <FormLayout>
