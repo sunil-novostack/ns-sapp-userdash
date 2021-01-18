@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Router from 'next/router';
+import Cookies from 'js-cookie';
 import {
   Page,
   Frame,
@@ -10,20 +12,29 @@ import NarvigationBar from '../components/NavigationBar';
 
 
 export default class App extends Component{  
+
+  constructor(props) {
+    super(props)  
+    this.state = {
+       isuserLoggedin:false,
+       config: {
+        apiKey: API_KEY, 
+        shopOrigin: Cookies.get('shopOrigin'),
+        forceRedirect: true
+       }
+    }
+  }
+  componentDidMount(){
+    if(!this.state.isuserLoggedin){
+      Router.push('/signup')
+    }else{
+
+    }
+  }
   render(){
     return (
-      <Frame
-          navigation={NarvigationBar}
-      >
-              <Page
-              title="Dashboard"
-              >
-                  <Layout>
-                      <SettingForm />
-                      <CrowlUrl/>
-                  </Layout>
-                  
-              </Page>
+      <Frame>
+             
       </Frame>
     );
   }  

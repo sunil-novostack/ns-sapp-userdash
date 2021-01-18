@@ -9,6 +9,17 @@ import '@shopify/polaris/dist/styles.css';
 import '../resource/css/style.css';
 
 export default class WrappedApp extends App {
+  constructor(props) {
+    super(props)  
+    this.state = {
+       isuserLoggedin:false,
+       config: {
+        apiKey: API_KEY, 
+        shopOrigin: Cookies.get('shopOrigin'),
+        forceRedirect: true
+       }
+    }
+  }
   render() {
     const {Component, pageProps} = this.props;
     const config  = { apiKey: API_KEY, shopOrigin: Cookies.get('shopOrigin'), forceRedirect: false }
@@ -19,9 +30,17 @@ export default class WrappedApp extends App {
           <meta charSet="utf-8" />
         </Head>
         
+        {this.state.config.shopOrigin
+        ? <Provider config={this.state.config}>
+            <AppProvider i18n={enTranslations}>
+                <Component {...pageProps} />
+            </AppProvider>
+          </Provider>
+        :
           <AppProvider i18n={enTranslations}>
-            <Component {...pageProps} />
+              <Component {...pageProps} />
           </AppProvider>
+        }
       </React.Fragment>
     );
   }
