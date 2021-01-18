@@ -42,6 +42,9 @@ export default class SettingForm extends React.Component{
                 accountName="Sunil-Novostack"
                 details="sunil-novostack.myshopify.com"
                 connected={this.state.connected}
+                termsOfService={
+                    <p>By Clicking Connect, You are agree to accept our terms and condition's <Link url='#'>Terms And Conditions</Link> Its Completly Free to Use</p>
+                }
             />
         )
         :(
