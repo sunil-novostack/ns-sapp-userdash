@@ -37,10 +37,10 @@ export default class SettingForm extends React.Component{
         return this.state.connected
         ?(
             <AccountConnection
-                avatarUrl="#"
+                avatarUrl="Now Connected"                
+                action={{content: 'Disconnect', onAction: this.toggleConnection.bind(this)}}
                 accountName="Sunil-Novostack"
                 details="https://sunil-novostack.myshopify.com/"
-                action={{content: 'Disconnected', onAction: this.toggleConnection.bind(this)}}
                 connected={this.state.connected}
             />
         )
