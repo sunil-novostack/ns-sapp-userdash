@@ -18,11 +18,9 @@ export default class WrappedApp extends App {
           <title>FB DropShipping</title>
           <meta charSet="utf-8" />
         </Head>
-        <Provider config={config}>
           <AppProvider i18n={enTranslations}>
             <Component {...pageProps} />
           </AppProvider>
-        </Provider>
       </React.Fragment>
     );
   }
