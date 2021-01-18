@@ -40,13 +40,18 @@ app.prepare().then(() => {
   );
 /*
   server.use(graphQLProxy({ version: ApiVersion.April20}));
- */
+ 
   server.use('/',verifyRequest(), async (ctx) => {
-    await handle(ctx.req, ctx.res);
-    ctx.respond = false;
-    ctx.res.statusCode = 200;
-  });
-
+    try{
+      await handle(ctx.req, ctx.res);
+      ctx.respond = false;
+      ctx.res.statusCode = 200;
+    }catch(e){
+      console.log(e)
+    }
+    
+  })
+*/
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
