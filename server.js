@@ -5,6 +5,8 @@ const { default: createShopifyAuth } = require('@shopify/koa-shopify-auth');
 const dotenv = require('dotenv');
 const { verifyRequest } = require('@shopify/koa-shopify-auth');
 const session = require('koa-session');
+const Router = require('koa-router');
+const axios = require('axios');
 
 dotenv.config();
 const { default: graphQLProxy } = require('@shopify/koa-shopify-graphql-proxy');
@@ -20,7 +22,7 @@ const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
 
 app.prepare().then(() => {
   const server = new Koa();
-  
+  const router = new Router();
   server.use(session({ sameSite: 'none', secure: true }, server));
   server.keys = [SHOPIFY_API_SECRET_KEY];
   
@@ -51,7 +53,16 @@ app.prepare().then(() => {
     }
     
   })
+  server.use(verifyRequest());
 */
+
+  // adding verifyRequest middleware for /merch route 
+  router.get('/signup', verifyRequest(), async (ctx) => {
+    await handle(ctx.req, ctx.res);
+    ctx.respond = false;
+    ctx.res.statusCode = 200;
+  });
+
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
