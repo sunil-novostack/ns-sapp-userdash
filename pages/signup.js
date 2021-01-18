@@ -24,7 +24,6 @@ export default class Signup extends Component {
 
 
     handleSignupSubmit = async (event) => {
-        console.log(Cookies.get('shopOrigin'))
         const signupForm = {
             first_name : this.state.userFirestName,
             last_name : this.state.userLastName,

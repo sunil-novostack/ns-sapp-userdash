@@ -6,9 +6,6 @@ import {
   Frame,
   Layout,
 } from '@shopify/polaris';
-import SettingForm from '../components/SettingForm';
-import CrowlUrl from '../components/CrawlUrl';
-import NarvigationBar from '../components/NavigationBar';
 
 
 export default class App extends Component{  
@@ -25,10 +22,10 @@ export default class App extends Component{
     }
   }
   componentDidMount(){
-    if(!this.state.isuserLoggedin){
+    if(!Cookies.get('nsns')){
       Router.push('/signup')
     }else{
-
+      Router.push('/dashboard')
     }
   }
   render(){
