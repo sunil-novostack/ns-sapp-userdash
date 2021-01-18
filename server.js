@@ -22,7 +22,6 @@ const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env;
 
 app.prepare().then(() => {
   const server = new Koa();
-  const router = new Router();
   server.use(session({ sameSite: 'none', secure: true }, server));
   server.keys = [SHOPIFY_API_SECRET_KEY];
   
@@ -35,6 +34,7 @@ app.prepare().then(() => {
       afterAuth(ctx) {
         const { shop, accessToken } = ctx.session;
         console.log('We did it!', accessToken);
+        ctx.cookies
         ctx.cookies.set('shopOrigin', shop, { httpOnly:false, secure: true, sameSite:'none' });
         ctx.redirect('/');
       },
@@ -56,19 +56,12 @@ app.prepare().then(() => {
   server.use(verifyRequest());
 */
 
-  // adding verifyRequest middleware for /merch route 
-  router.get('/signup', verifyRequest(), async (ctx) => {
-    await handle(ctx.req, ctx.res);
-    ctx.respond = false;
-    ctx.res.statusCode = 200;
-  });
 
   server.use(async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
     ctx.res.statusCode = 200;
   });
-  
   server.listen(port, () => {
 
     console.log(`> Ready on http://localhost:${port}`);

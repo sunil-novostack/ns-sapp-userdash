@@ -1,48 +1,60 @@
-import React, {useState, useCallback} from 'react';
+import React, {Component} from 'react';
 import {Form, Page, FormLayout, Layout, Card, TextField, Button, Icon, DisplayText, Link } from '@shopify/polaris';
 import {IoMdLock } from "react-icons/io";
 
-export default function Login() {
-    const [isUserLogged,setIsUserLogged] = useState(false);
-    const [userName,setUserName] = useState('');
-    const [userPass,setUserPass] = useState('');
+export default class Signin extends Component{
+    constructor(props) {
+        super(props)  
+        this.state = {
+            isuserLoggedin:false,
+            userName:'',
+            userPass:'',
+        }
+    }
     
-    
-    const handleSigninSubmit = useCallback((_event) => {
-        setIsUserLogged(true)
-        setUserName('')
-        setUserPass('')
-    }, []);
-    const handleUsernameChange = useCallback((value) => setUserName(value),[],);
-    const handleUserpassChange = useCallback((value) => setUserPass(value),[],);
-  return (
-        <Page>
-            <Layout>
-                <Card sectioned>
-                    <Form name="signin-form" onSubmit={handleSigninSubmit}>
-                        <FormLayout>
-                            <Icon source={IoMdLock} backdrop={false} />
-                            <DisplayText size="medium">Sign In</DisplayText>
-                            <TextField
-                                name="userName"
-                                type="email"
-                                placeholder="Email Address *"
-                                onChange={handleUsernameChange}
-                                value={userName}
-                            />
-                            <TextField
-                                name="userPass"
-                                type="password"
-                                placeholder="Password *"
-                                onChange={handleUserpassChange}
-                                value={userPass}
-                            />
-                            <Button icon="" name="login" size="medium" primary={true}>SIGN IN</Button>
-                            <Link url="/resetpass">Forgot Password?</Link><Link url="/signup" >Don't have an account? Sign Up</Link>
-                        </FormLayout>
-                    </Form>
-                </Card>
-            </Layout>
-        </Page>    
-  );
+    handleUsernameChange = (value) => {
+        this.setState({userName: value});
+    }
+    handleUserpassChange = (value) => {
+        this.setState({userPass: value});
+    }
+    handleSigninSubmit = (event) => {
+        
+    }
+
+    render(){
+        return (
+            <Page>
+                <Layout>
+                    <Card sectioned>
+                        <Form name="signin-form" onSubmit={this.handleSigninSubmit} method="post">
+                            <FormLayout>
+                                <Icon source={IoMdLock} backdrop={false} />
+                                <DisplayText size="medium">Sign In</DisplayText>
+                                <TextField
+                                    name="userName"
+                                    type="email"
+                                    placeholder="Email Address *"
+                                    value={this.state.userName}
+                                    onChange={this.handleUsernameChange}
+                                />
+                                <TextField
+                                    name="userPass"
+                                    type="password"
+                                    placeholder="Password *"
+                                    value={this.state.userPass}
+                                    onChange={this.handleUserpassChange}
+                                   
+                                />
+                                <Button name="login" size="medium" primary={true} submit="true">SIGN IN</Button>
+                                
+                                <Link url="/resetpass">Forgot Password?</Link><Link url="/signup" >Don't have an account? Sign Up</Link>
+                            </FormLayout>
+                        </Form>
+                    </Card>
+                </Layout>
+            </Page>    
+        );
+    }
+  
 }
