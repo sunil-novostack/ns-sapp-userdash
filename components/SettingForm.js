@@ -16,7 +16,7 @@ export default class SettingForm extends React.Component{
     }
     render(){
         return(
-                <Form>
+                <Form method="post">
                     <FormLayout>
                         <Layout.AnnotatedSection
                             title="Connected Store"
