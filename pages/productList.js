@@ -22,6 +22,9 @@ const ProductList = () => {
               marginTop: "20px",
             }}
           >
+          {
+            console.log(data,'---',error)
+          }
             
           </div>
         </Layout>
