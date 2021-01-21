@@ -22,10 +22,21 @@ const ProductList = () => {
               marginTop: "20px",
             }}
           >
-          {
-            console.log(data,'---',error)
-          }
-            
+            {data.map(({ id, created_at, product_type, title, vendor, image }) => (
+              <CalloutCard
+                title={title}
+                illustration={image.src}
+                primaryAction={{
+                  content: "Demo button",
+                  url: "https://www.shopify.com",
+                }}
+              >
+                <DisplayText size="small">Id:- {id}</DisplayText>
+                <DisplayText size="small">Created At:- {new Date(created_at).toLocaleDateString()}</DisplayText>
+                <DisplayText size="small">Product Type:- {product_type}</DisplayText>
+                <DisplayText size="small">Vendor:- {vendor}</DisplayText>
+              </CalloutCard>
+            ))}
           </div>
         </Layout>
       </Page>
